@@ -46,3 +46,5 @@ export default class Contador extends Component {
   }
 
 }
+
+// export default Contador
