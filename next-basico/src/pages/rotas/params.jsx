@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
 
-export default function params() {
+export default function Params() {
   const router = useRouter()
   const nome = router.query.nome
   const id = router.query.id

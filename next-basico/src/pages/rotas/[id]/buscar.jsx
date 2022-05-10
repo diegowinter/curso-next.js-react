@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 
-export default function buscar() {
+export default function Buscar() {
   const router = useRouter()
   const id = router.query.id
 

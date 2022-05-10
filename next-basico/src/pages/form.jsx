@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const form = () => {
+const Form = () => {
   const [nome, setNome] = useState('')
   const [idade, setIdade] = useState(0)
   const [usuarios, setUsuarios] = useState([])
@@ -40,4 +40,4 @@ const form = () => {
   );
 }
 
-export default form;
+export default Form;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const questao = () => {
+const Questao = () => {
   const [questao, setQuestao] = useState(null)
 
   useEffect(() => {
@@ -31,4 +31,4 @@ const questao = () => {
   );
 }
 
-export default questao;
+export default Questao;
