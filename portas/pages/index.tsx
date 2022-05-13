@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <div>
-      <Porta porta={p1} />
+      <Porta value={p1} onChange={novaPorta => setP1(novaPorta)} />
     </div>
   )
 }
