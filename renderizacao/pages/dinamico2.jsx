@@ -1,6 +1,4 @@
-// Esse número sempre vai ser o mesmo, pois vai ser gerado só uma vez na hora
-// do build.
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const resp = await fetch('http://localhost:3000/api/produtos')
   const produtos = await resp.json()
 
@@ -11,7 +9,7 @@ export async function getStaticProps() {
   }
 }
 
-const estatico4 = (props) => {
+const dinamico2 = (props) => {
   function renderizarProdutos() {
     return props.produtos.map(produto => {
       return <li key={produto.id}>{produto.id} - {produto.nome} tem preço de R$ {produto.preco}</li>
@@ -20,7 +18,7 @@ const estatico4 = (props) => {
 
   return (
     <div>
-      <h1>Estático #04</h1>
+      <h1>Dinâmico #02</h1>
       <ul>
         {renderizarProdutos()}
       </ul>
@@ -28,4 +26,4 @@ const estatico4 = (props) => {
   );
 }
 
-export default estatico4;
+export default dinamico2;
