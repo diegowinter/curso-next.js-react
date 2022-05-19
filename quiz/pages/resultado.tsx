@@ -1,4 +1,6 @@
 import { useRouter } from "next/router";
+import Botao from "../components/Botao";
+import Estatistica from "../components/Estatistica";
 import styles from '../styles/Resultado.module.css'
 
 const resultado = () => {
@@ -11,10 +13,13 @@ const resultado = () => {
   return (
     <div className={styles.resultado}>
       <h1>Resultado Final</h1>
-      <div>{total}</div>
-      <div>{certas}</div>
-      <div>{`${percentual}%`}</div>
-    </div>
+      <div style={{ display: 'flex' }}>
+        <Estatistica texto='Perguntas' valor={total} />
+        <Estatistica texto='Certas' valor={certas} corFundo='#9CD2A4' />
+        <Estatistica texto='Percentual' valor={`${percentual}%`} corFundo='#DE6A33' />
+      </div>
+      <Botao href='/' texto='Tentar novamente'></Botao>
+    </div >
   );
 }
 
