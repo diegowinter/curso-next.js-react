@@ -40,10 +40,8 @@ export default function Home() {
   }
 
   function idProximaPergunta() {
-    if (questao) {
-      const proximoIndice = idsDasQuestoes.indexOf(questao.id) + 1
-      return idsDasQuestoes[proximoIndice]
-    }
+    const proximoIndice = idsDasQuestoes.indexOf(questao.id) + 1
+    return idsDasQuestoes[proximoIndice]
   }
 
   function irPraProximoPasso() {
@@ -65,12 +63,13 @@ export default function Home() {
     })
   }
 
-  return (
-
+  return questao ? (
     <Questionario
       questao={questao}
       ultima={idProximaPergunta() === undefined}
       questaoRespondida={questaoRespondida}
       irPraProximoPasso={irPraProximoPasso} />
+  ) : (
+    <div>Carregando...</div>
   )
 }
