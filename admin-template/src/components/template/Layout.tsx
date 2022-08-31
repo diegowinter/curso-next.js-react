@@ -14,7 +14,7 @@ export default function Layout(props: LayoutProps) {
 
   return (
     <div className={`
-      dark
+      ${tema}
       flex h-screen w-screen
     `}>
       <MenuLateral />
