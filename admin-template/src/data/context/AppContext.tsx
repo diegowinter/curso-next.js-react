@@ -1,13 +1,28 @@
-import { createContext, JSXElementConstructor, ReactElement, ReactFragment, ReactPortal } from "react";
+import { createContext, JSXElementConstructor, ReactElement, ReactFragment, ReactPortal, useState } from "react";
 
-const AppContext = createContext({
-  nome: ''
+type Tema = 'dark' | ''
+
+interface AppContextProps {
+  tema: Tema
+  alternarTema: () => void
+}
+
+const AppContext = createContext<AppContextProps>({
+  tema: '',
+  alternarTema: () => { },
 })
 
-export function AppProvider(props: { children: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; }) {
+export function AppProvider(props: { children: any }) {
+  const [tema, setTema] = useState<Tema>('dark')
+
+  function alternarTema() {
+    setTema(tema === '' ? 'dark' : '')
+  }
+
   return (
     <AppContext.Provider value={{
-      nome: 'Teste Context API'
+      tema: tema,
+      alternarTema
     }}>
       {props.children}
     </AppContext.Provider>
