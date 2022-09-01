@@ -1,16 +1,24 @@
 import { useState } from "react";
 import AuthInput from "../components/auth/AuthInput";
+import { IconeAtencao } from "../components/icons";
 
 export default function Autenticacao() {
   const [modo, setModo] = useState<'login' | 'cadastro'>('login')
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
+  const [erro, setErro] = useState('')
+
+  function exibirErro(msg: string, tempoSegundos = 5) {
+    setErro(msg)
+    setTimeout(() => setErro(''), tempoSegundos * 1000)
+  }
 
   function submeter() {
     if (modo === 'login') {
       console.log('login')
     } else {
       console.log('cadastrar')
+      exibirErro('Ocorreu um erro no cadastro!')
     }
   }
 
@@ -27,19 +35,29 @@ export default function Autenticacao() {
         <h1 className="text-2xl font-bold mb-5">
           {modo === 'login' ? 'Entre com sua conta' : 'Cadastre-se na plataforma'}
         </h1>
+
+        {erro ? (
+          <div className={`
+          flex items-center
+          bg-red-400 text-white py-3 px-5 my-2
+          border border-red-700 rounded-lg
+        `}>
+            {IconeAtencao()}
+            <span className="ml-3">{erro}</span>
+          </div>
+        ) : false}
+
         <AuthInput
           label="E-mail"
           valor={email}
           tipo='email'
           valorMudou={setEmail}
-
         />
         <AuthInput
           label="Senha"
           valor={senha}
           tipo='password'
           valorMudou={setSenha}
-
         />
         <button onClick={submeter} className={`
         w-full bg-indigo-500 hover:bg-indigo-400
