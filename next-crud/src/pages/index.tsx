@@ -1,12 +1,16 @@
 import type { NextPage } from 'next'
+import Layout from '../components/Layout'
 
 const Home: NextPage = () => {
   return (
     <div className={`
-      flex h-screen justify-center items-center
-      bg-gradient-to-tr from-purple-900 to-blue-500
+      flex justify-center items-center h-screen
+      bg-gradient-to-r from-blue-500 to-purple-500
+      text-white
     `}>
-      <span className='text-4xl'>Texto</span>
+      <Layout titulo="Cadastro simples">
+        <span>Conteúdo</span>
+      </Layout>
     </div>
   )
 }
