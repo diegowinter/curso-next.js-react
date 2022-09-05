@@ -8,7 +8,9 @@ interface AuthContextProps {
   usuario?: Usuario
   carregando?: boolean
   loginGoogle?: () => Promise<void>
-  logout?: () => Promise<void>
+  login: (email: string, senha: string) => Promise<void>
+  cadastrar: (email: string, senha: string) => Promise<void>
+  logout: () => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextProps>({})
@@ -60,6 +62,29 @@ export function AuthProvider(props: any) {
     }
   }
 
+  async function login(email: string, senha: string) {
+    try {
+      setCarregando(true)
+      const resp = await firebase.auth().signInWithEmailAndPassword(email, senha)
+      await configurarSessao(resp.user!)
+      router.push('/')
+    } finally {
+      setCarregando(false)
+    }
+  }
+
+  async function cadastrar(email: string, senha: string) {
+    try {
+      setCarregando(true)
+      const resp = await firebase.auth().createUserWithEmailAndPassword(email, senha)
+      await configurarSessao(resp.user!)
+      router.push('/')
+    } finally {
+      setCarregando(false)
+    }
+  }
+
+
   function gerenciarCookie(logado: boolean) {
     if (logado) {
       Cookies.set('admin-template-cod3r-auth', logado.toString(), {
@@ -93,6 +118,8 @@ export function AuthProvider(props: any) {
     <AuthContext.Provider value={{
       usuario,
       carregando,
+      login,
+      cadastrar,
       loginGoogle,
       logout
     }}>
