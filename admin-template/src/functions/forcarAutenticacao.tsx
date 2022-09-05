@@ -1,12 +1,8 @@
 import Head from 'next/head'
 import router from "next/router"
-import useAuth from "../../data/hook/useAuth"
+import useAuth from '../data/hook/useAuth'
 
-interface ForcarAutenticacaoProps {
-  children?: any
-}
-
-export default function ForcarAutenticacao(props: ForcarAutenticacaoProps) {
+export default function ForcarAutenticacao(jsx: any) {
   const { usuario, carregando } = useAuth()
 
   function renderziarConteudo() {
@@ -23,7 +19,7 @@ export default function ForcarAutenticacao(props: ForcarAutenticacaoProps) {
             }}
           />
         </Head>
-        {props.children}
+        {jsx}
       </>
     )
   }
