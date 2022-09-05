@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import router from "next/router"
 import useAuth from "../../data/hook/useAuth"
 
@@ -11,6 +12,17 @@ export default function ForcarAutenticacao(props: ForcarAutenticacaoProps) {
   function renderziarConteudo() {
     return (
       <>
+        <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                if (!document.cookie?.includes("admin-template-cod3r-auth")) {
+                  window.location.href = "/autenticacao"
+                }
+              `
+            }}
+          />
+        </Head>
         {props.children}
       </>
     )
