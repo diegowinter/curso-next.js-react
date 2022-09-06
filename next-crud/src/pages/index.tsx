@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Botao from '../components/Botao'
+import Formulario from '../components/Formulario'
 import Layout from '../components/Layout'
 import Tabela from '../components/Tabela'
 import Cliente from '../core/Cliente'
@@ -32,6 +33,7 @@ const Home: NextPage = () => {
           <Botao cor="green" className='mb-4'>Novo cliente</Botao>
         </div>
         <Tabela clientes={clientes} clienteSelecionado={clienteSelecionado} clienteExcluido={clienteExcluido} />
+        <Formulario cliente={clientes[0]} />
       </Layout>
     </div>
   )
